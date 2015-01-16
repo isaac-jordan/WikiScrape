@@ -6,9 +6,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'wikiscrape.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', index),
+    url(r'^$', index, name='index'),
     url(r'^search/', search),
     url(r'^ajaxSuggest/', ajaxSuggest),
+    url(r'^about$', about, name='about'),
 
     #url(r'^admin/', include(admin.site.urls)),
 )

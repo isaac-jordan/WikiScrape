@@ -8,7 +8,10 @@ import bs4
 import json
 
 def index(request):
-	return render(request, 'base.html')
+	return render(request, 'index.html')
+
+def about(request):
+	return render(request, 'about.html')
 
 def search(request):
 	print request.GET['search']

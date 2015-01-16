@@ -9,127 +9,58 @@
   <title>WikiScrape</title>
 
   {% load staticfiles %}
-  <!-- If you are using the gem version, you need this only -->
   <link rel="stylesheet" href="{% static "css/app.css" %}">
-
   <script src="{% static "bower_components/foundation/js/vendor/modernizr.js" %}"></script>
 
+  {% block headerScripts %}
+
+  {% endblock %}
+
 </head>
+
 <body>
+{% block menu %}
+<div class="row">
+  <div class="large-12 columns">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1>
+            <a href="{% url 'index' %}">
+              WikiScrape
+            </a>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+      </ul>
 
-
-  <div class="row">
-    <div class="large-12 columns">
-
-
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-
-          <li class="name">
-            <h1>
-              <a href="#">
-                WikiScrape
-              </a>
-            </h1>
-          </li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="https://github.com/Sheepzez/WikiScrape">Code</a></li>
         </ul>
 
-        <section class="top-bar-section">
-          <ul class="left">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Code</a></li>
-          </ul>
+        <ul class="right">
+          <li class="search">
+            <form>
+              <input type="search">
+            </form>
+          </li>
 
-          <ul class="right">
-            <li class="search">
-              <form>
-                <input type="search">
-              </form>
-            </li>
-
-            <li class="has-button">
-              <a class="small button" href="#">Search</a>
-            </li>
-          </ul>
-        </section>
-      </nav>
-
-
-
-    </div>
+          <li class="has-button">
+            <a class="small button" href="#">Search</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
   </div>
+</div>
+{% endblock %}
 
+{% block maincontent %}
+{% endblock %}
 
-  <div class="row">
-    <div class="large-12 columns">
-
-
-
-      <div class="hide-for-small">
-        <div id="featured">
-        <br><br><br>
-        Search Wikipedia to start:
-          <form action="/search/" type="get">
-            <input type="text" id="search" name="search" placeholder="Search">
-          </form>
-          <div id="suggestions">
-          </div>
-
-        </div>
-      </div>
-
-
-
-
-
-
-
-      <div class="row">
-        <div class="small-12 show-for-small"><br>
-          <img src="http://placehold.it/1000x600&text=For Small Screens"/>
-        </div>
-      </div>
-
-
-
-
-    </div>
-  </div><br>
-
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="row">
-
-
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail"/>
-          <h6 class="panel">Example Search</h6>
-        </div>
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail"/>
-          <h6 class="panel">Example Search</h6>
-        </div>
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail"/>
-          <h6 class="panel">Example Search</h6>
-        </div>
-
-        <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail"/>
-          <h6 class="panel">Example Search</h6>
-        </div>
-
-
-
-      </div>
-    </div>
-  </div>
-
-
+{% block subcontent %}
 
   <div class="row">
     <div class="large-12 columns">
@@ -168,11 +99,11 @@
 
           <h4>Get In Touch!</h4><hr/>
 
-          <a class="large button expand" href="#">
+          <a class="large button expand" href="https://github.com/Sheepzez/WikiScrape">
             Star this on GitHub!
           </a>
 
-          <a class="large button expand" href="#">
+          <a class="large button expand" href="https://github.com/Sheepzez/WikiScrape/issues">
             Report issues/request features!
           </a>
 
@@ -184,9 +115,10 @@
       </div>
     </div>
   </div>
+  {% endblock %}
 
 
-
+{% block footer %}
   <footer class="row">
     <div class="large-12 columns">
       <hr>
@@ -196,18 +128,22 @@
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Issues</a></li>
+            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url "about"}">About</a></li>
+            <li><a href="https://github.com/Sheepzez/WikiScrape">GitHub</a></li>
+            <li><a href="https://github.com/Sheepzez/WikiScrape/issues">Issues</a></li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
+{% endblock %}
 
   <script src="{% static "bower_components/foundation/js/vendor/jquery.js" %}"></script>
   <script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script>
   <script src="{% static "js/app.js" %}"></script>
+
+{% block footerScripts %}
+{% endblock %}
 </body>
 </html>
