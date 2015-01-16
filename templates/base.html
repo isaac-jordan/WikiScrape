@@ -19,48 +19,36 @@
 </head>
 
 <body>
-{% block menu %}
-<div class="row">
-  <div class="large-12 columns">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1>
-            <a href="{% url 'index' %}">
-              WikiScrape
-            </a>
-          </h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <ul class="left">
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="https://github.com/Sheepzez/WikiScrape">Code</a></li>
+  {% block menu %}
+  <div class="row">
+    <div class="large-12 columns">
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1>
+              <a href="{% url 'index' %}">
+                WikiScrape
+              </a>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
         </ul>
 
-        <ul class="right">
-          <li class="search">
-            <form>
-              <input type="search">
-            </form>
-          </li>
-
-          <li class="has-button">
-            <a class="small button" href="#">Search</a>
-          </li>
-        </ul>
-      </section>
-    </nav>
+        <section class="top-bar-section">
+          <ul class="left">
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="https://github.com/Sheepzez/WikiScrape" target="_blank">Code</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
   </div>
-</div>
-{% endblock %}
+  {% endblock %}
 
-{% block maincontent %}
-{% endblock %}
+  {% block maincontent %}
+  {% endblock %}
 
-{% block subcontent %}
+  {% block subcontent %}
 
   <div class="row">
     <div class="large-12 columns">
@@ -118,18 +106,18 @@
   {% endblock %}
 
 
-{% block footer %}
+  {% block footer %}
   <footer class="row">
     <div class="large-12 columns">
       <hr>
       <div class="row">
         <div class="large-6 columns">
-          <p>©</p>
+          <p>© 2015</p>
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
             <li><a href="{% url "index" %}">Home</a></li>
-            <li><a href="{% url "about"}">About</a></li>
+            <li><a href="{% url "about" %}">About</a></li>
             <li><a href="https://github.com/Sheepzez/WikiScrape">GitHub</a></li>
             <li><a href="https://github.com/Sheepzez/WikiScrape/issues">Issues</a></li>
           </ul>
@@ -137,13 +125,13 @@
       </div>
     </div>
   </footer>
-{% endblock %}
+  {% endblock %}
 
   <script src="{% static "bower_components/foundation/js/vendor/jquery.js" %}"></script>
   <script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script>
   <script src="{% static "js/app.js" %}"></script>
 
-{% block footerScripts %}
-{% endblock %}
+  {% block footerScripts %}
+  {% endblock %}
 </body>
 </html>
