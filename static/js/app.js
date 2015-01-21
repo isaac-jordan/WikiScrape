@@ -1,4 +1,5 @@
 $(document).foundation();
+
 $('#search').keyup(function(e) {
 	var query = $(this).val();
 
