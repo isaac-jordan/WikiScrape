@@ -7,14 +7,14 @@
     Search Wikipedia to start:
     <div class="row collapse">
       <div id="featured" class="small-10 columns">
-        <form action="/search/" type="get">
+        <form id='graphForm' action="search" type="get">
           <input type="text" id="search" name="search" placeholder="Search">
         </form>
         <div id="suggestions">
         </div>
       </div>
       <div class="small-2 columns">
-        <a href="/graph/" class="button postfix">Go</a>
+        <input type="submit" form="graphForm" class="button postfix" value="Go">
       </div>
     </div>
   </div>

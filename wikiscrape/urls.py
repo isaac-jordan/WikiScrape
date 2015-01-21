@@ -10,6 +10,5 @@ urlpatterns = patterns('',
     url(r'^search/', search),
     url(r'^ajaxSuggest/', ajaxSuggest),
     url(r'^about$', about, name='about'),
-
     #url(r'^admin/', include(admin.site.urls)),
 )

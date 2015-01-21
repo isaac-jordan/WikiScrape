@@ -6,6 +6,7 @@ import wikipedia
 import requests
 import bs4
 import json
+from urlparse import urlparse
 
 def index(request):
 	return render(request, 'index.html')
@@ -16,19 +17,21 @@ def about(request):
 def search(request):
 	print request.GET['search']
 	result = wikipedia.page(title=wikipedia.search(request.GET['search']))
-	wikiPages = result.links
-	extPages = result.references
-	response1 = ""
-	response2 = ""
-
-	for page in wikiPages:
-		response1 += page
-		response1 += "\n"
-	for page in extPages:
-		response2 += page
-		response2 += "\n"
-
-	return HttpResponse(response1 + "<br><br>" + response2)
+	
+        url = result.url.decode()
+        print url
+	response = requests.get(url)
+        soup = bs4.BeautifulSoup(response.text)
+        links = [a.attrs.get('href') for a in soup.select('a.external')]
+        domains = {}
+        for link in links:
+            domain = '{uri.scheme}://{uri.netloc}/'.format(uri=urlparse(link))
+            if domain in domains:
+                domains[domain] += 1
+            else:
+                domains[domain] = 1
+        print domains
+	return HttpResponse("Check the terminal!")
 
 @csrf_exempt
 def ajaxSuggest(request):
@@ -43,3 +46,4 @@ def searchWiki(url):
 	response = requests.get(url)
 	soup = bs4.BeautifulSoup(response.text)
 	links = soup.select
+
