@@ -24,6 +24,7 @@ def search(request):
         soup = bs4.BeautifulSoup(response.text)
         links = [a.attrs.get('href') for a in soup.select('a.external')]
         domains = {}
+    	#Construct a dictionary of domains that says how many times they've occurred.
         for link in links:
             domain = '{uri.scheme}://{uri.netloc}/'.format(uri=urlparse(link))
             if domain in domains:
@@ -31,6 +32,11 @@ def search(request):
             else:
                 domains[domain] = 1
         print domains
+	body = soup.find('div', id='bodyContent')
+	for link in body.find_all('a'):
+		href = link.get('href')
+		if '/wiki/' in href:
+			print href
 	return HttpResponse("Check the terminal!")
 
 @csrf_exempt
